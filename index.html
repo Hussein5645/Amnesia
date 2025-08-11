@@ -1,320 +1,303 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amnesia - فكرة مبدئية للعبة</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Cairo', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .header {
-            text-align: center;
-            padding: 40px 0;
-            border-bottom: 3px solid #2a5298;
-            margin-bottom: 40px;
-        }
-        
-        .game-title {
-            font-size: 3.5em;
-            font-weight: 700;
-            color: #1e3c72;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        .subtitle {
-            font-size: 1.4em;
-            color: #666;
-            font-weight: 300;
-        }
-        
-        .section {
-            margin-bottom: 50px;
-            padding: 30px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            border-right: 5px solid #2a5298;
-        }
-        
-        .section h2 {
-            font-size: 2.2em;
-            color: #1e3c72;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e9ecef;
-        }
-        
-        .section h3 {
-            font-size: 1.6em;
-            color: #2a5298;
-            margin: 25px 0 15px 0;
-        }
-        
-        .section p {
-            font-size: 1.1em;
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        
-        .logline {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border-right: 5px solid #764ba2;
-        }
-        
-        .logline p {
-            font-size: 1.3em;
-            font-weight: 400;
-            line-height: 1.8;
-        }
-        
-        .characters .character {
-            background: #fff;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
-            border-right: 3px solid #28a745;
-        }
-        
-        .gameplay-pillars .pillar {
-            background: #fff;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 8px;
-            border-right: 3px solid #ffc107;
-        }
-        
-        .moments .moment {
-            background: #fff;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 8px;
-            border-right: 3px solid #dc3545;
-        }
-        
-        .themes {
-            background: linear-gradient(135deg, #ff9a9e, #fecfef);
-            border-right: 5px solid #ff9a9e;
-        }
-        
-        .expansion {
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            border-right: 5px solid #a8edea;
-        }
-        
-        .highlight {
-            background: #fff3cd;
-            padding: 15px;
-            border-radius: 5px;
-            border-right: 3px solid #ffc107;
-            margin: 20px 0;
-        }
-        
-        ul {
-            padding-right: 30px;
-            margin-bottom: 15px;
-        }
-        
-        li {
-            margin-bottom: 10px;
-            font-size: 1.1em;
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 30px;
-            border-top: 3px solid #2a5298;
-            margin-top: 40px;
-            color: #666;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                padding: 15px;
-            }
-            
-            .game-title {
-                font-size: 2.5em;
-            }
-            
-            .section {
-                padding: 20px;
-            }
-            
-            .section h2 {
-                font-size: 1.8em;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Amnesia — أفكار اللور والميزات</title>
+
+  <!-- Cairo font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg-0:#0b0f1a;          /* أزرق غامق */
+      --bg-1:#11182a;          /* طبقة داكنة */
+      --panel:#0f1526cc;       /* زجاج مع تعتيم */
+      --text:#e7ecff;          /* أبيض مزرق */
+      --muted:#b6c1ffbb;
+      --accent:#8aa2ff;        /* نيون أزرق */
+      --accent-2:#b88cff;      /* بنفسجي */
+      --line:#31406b;
+      --good:#53f6a3;
+      --warn:#ffd166;
+      --danger:#ff6b6b;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --glow:0 0 0 transparent;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Cairo',system-ui,Arial,Helvetica,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% -10%, #2a529822 0%, transparent 60%),
+        radial-gradient(900px 500px at 90% 0%, #667eea22 0%, transparent 55%),
+        linear-gradient(135deg, #0a0e19 0%, #121a2d 55%, #0c0f1b 100%);
+      overflow-x:hidden;
+    }
+
+    /* طبقة ضباب متحركة خفيفة */
+    .fog{
+      pointer-events:none;
+      position:fixed; inset:0;
+      background:
+        url('') center/cover no-repeat;
+    }
+    .fog::before,
+    .fog::after{
+      content:"";
+      position:absolute; inset:-20%;
+      background:
+        radial-gradient(closest-side, #b7c4ff0f, #0000 70%),
+        radial-gradient(closest-side, #c8a7ff0f, #0000 70%);
+      filter:blur(25px);
+      animation:fogMove 40s linear infinite;
+      opacity:.8;
+    }
+    .fog::after{ animation-duration:65s; mix-blend-mode:screen; opacity:.5 }
+    @keyframes fogMove{
+      0%{ transform:translate3d(0,0,0) scale(1)}
+      50%{ transform:translate3d(-8%,3%,0) scale(1.05)}
+      100%{ transform:translate3d(0,0,0) scale(1)}
+    }
+
+    .wrap{max-width:1100px; margin:auto; padding:28px}
+
+    .hero{
+      position:relative;
+      border-radius:calc(var(--radius) + 6px);
+      padding:36px 24px 26px;
+      background:
+        linear-gradient(180deg, #10172b 0%, #0b0f1a 100%),
+        url('assets/hero-placeholder.jpg') center/cover no-repeat;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background:linear-gradient(0deg, rgba(11,15,26,.9) 10%, rgba(11,15,26,.4) 100%);
+      z-index:-1;
+    }
+    .hero h1{
+      font-size:44px; margin:0 0 8px; letter-spacing:.5px;
+      text-shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    .hero p{ margin:0; color:var(--muted); }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:18px; margin-top:22px;
+    }
+    .card{
+      grid-column:span 12;
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .card h2{font-size:26px; margin:0 0 10px}
+    .card h3{font-size:20px; margin:18px 0 8px}
+    .card p{margin:0 0 8px; color:#dbe2ff}
+    .muted{color:var(--muted)}
+    .list{margin:6px 0 0; padding:0 18px}
+    .list li{margin:8px 0}
+
+    /* أماكن صور مرنة */
+    .img-slot{
+      position:relative;
+      border:1.5px dashed #6b7ab8;
+      border-radius:12px;
+      background:
+        linear-gradient(180deg, #0f1425, #0a0e1b);
+      aspect-ratio:16/9;
+      display:flex; align-items:center; justify-content:center;
+      color:#9fb1ff; cursor:pointer; overflow:hidden;
+    }
+    .img-slot.small{aspect-ratio:1/1}
+    .img-slot img{width:100%; height:100%; object-fit:cover; display:block}
+    .img-slot span{
+      position:absolute; inset:auto auto 10px 10px;
+      font-size:12px; opacity:.8; background:#0e1322;
+      border:1px solid #2a3a63; border-radius:8px; padding:4px 8px;
+    }
+    .img-slot::before{
+      content:"انقر لإضافة صورة";
+      font-size:14px; letter-spacing:.3px;
+      opacity:.7;
+    }
+
+    /* تخطيط استجابة */
+    @media(min-width:860px){
+      .span-6{grid-column:span 6}
+      .span-4{grid-column:span 4}
+      .span-8{grid-column:span 8}
+    }
+
+    .tag{
+      display:inline-block; margin:6px 4px 0;
+      background:#0e1730; color:#bcd2ff;
+      border:1px solid #334272;
+      padding:6px 10px; border-radius:999px; font-size:12px
+    }
+    .roadmap{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+    .foot{color:#98a7e2; text-align:center; margin:26px 0 8px}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1 class="game-title">Amnesia</h1>
-            <p class="subtitle">فكرة مبدئية — (Lore قيد التطوير)</p>
-        </header>
+  <div class="fog"></div>
 
-        <section class="section logline">
-            <h2>الخطّاف (Logline)</h2>
-            <p>
-                ضبابٌ حيّ يزحف على أطراف المدن، وأبراجٌ تبثّ تردداتٍ تُبعده عن الملاذات الآمنة. تستيقظ فيفيان في محمية مدمَّرة لا تتذكرها… مع الوقت يتضح أنها هي نفسها اليد الخفية: عميلةٌ لمنظمةٍ تتعايش مع الضباب وتستغله عبر "جرعاته" لتفكيك هوية الناس وتجنيد شخصياتهم البديلة. كل إصلاح لبرجٍ يُقرّب الحقيقة—وكل نفخة ضباب تُعيد إطلاق "فيفيان الأخرى".
-            </p>
-        </section>
+  <div class="wrap">
+    <!-- HERO -->
+    <header class="hero">
+      <h1>Amnesia — أفكار اللّور والميزات</h1>
+      <p>عرض بصري للأفكار السردية والاتجاهات المستقبلية، مع أماكن صور قابلة للاستبدال.</p>
+    </header>
 
-        <section class="section">
-            <h2>فرضية العالم</h2>
-            
-            <h3>الضباب ككائن حيّ</h3>
-            <p>
-                كتلة واعية/شبه واعية تتواصل عبر ترددات منخفضة وتتغذّى على النشاط العصبي وتُشوّه الذاكرة والإحساس بالزمن.
-            </p>
-            
-            <h3>الأبراج</h3>
-            <p>
-                محطات توليد نبضات/تردّدات تعاكس "نَسَق" الضباب وتبني حول المناطق الآمنة "جيوب استقرار". تعطّلُها يفتح ممراً للضباب.
-            </p>
-            
-            <h3>المنظمة</h3>
-            <p>
-                فصيل براغماتي تعلّم التعايش مع الضباب، ينتقي أفرادًا ذوي القابلية ويعطيهم جرعات ضبابية مضبوطة لخلق "شخصيات تشغيلية" عدوانية تُستعمل ضد الخصوم.
-            </p>
-        </section>
+    <!-- GRID CONTENT -->
+    <section class="grid">
 
-        <section class="section characters">
-            <h2>الشخصيات</h2>
-            
-            <div class="character">
-                <h3>فيفيان</h3>
-                <p>
-                    فنيّة أنظمة وأبراج، عميلة مزدوجة الوعي. شخصيتها الأساسية رحيمة وعمليّة؛ شخصيتها البديلة (التي تُثار بالضباب) حازمة/عنيفة، نفّذت سابقًا ضربات تخريبية. فقدت الاسم والذكريات بفعل التعرض الطويل.
-                </p>
-            </div>
-            
-            <div class="character">
-                <h3>الناجون</h3>
-                <p>
-                    مجتمع صغير أعاد الثقة إلى فيفيان بعد أن "ساعدتهم" في الصيانة—قبل أن تُحطِّم أبراجهم في حالة انتكاسة.
-                </p>
-            </div>
-            
-            <div class="character">
-                <h3>الضباب</h3>
-                <p>
-                    ليس شرًا مطلقًا؛ قد يكون كيانًا يحاول استعادة توازن بيئي/طاقي مفقود.
-                </p>
-            </div>
-        </section>
+      <!-- لقطات/آرت رئيسي -->
+      <div class="card span-8">
+        <h2>غلاف / لقطة من اللعبة</h2>
+        <div class="img-slot" data-label="غلاف">
+          <!-- ضع رابط صورة هنا إن وجِد -->
+          <!-- <img src="assets/your-image-1.jpg" alt="لقطة أساسية"> -->
+          <span>غلاف</span>
+          <input type="file" accept="image/*" hidden>
+        </div>
+        <p class="muted">ضع لقطة تُلخّص الجو: ضباب، أضواء أبراج، مسارات رطبة.</p>
+      </div>
 
-        <section class="section">
-            <h2>الملخص السردي</h2>
-            <p>
-                تستيقظ فيفيان في محمية مدمّرة كانت هي من دمّر أبراجها خلال نوبة فقدان. تكسب ثقة الناس مجددًا بمهاراتها وتتطوّع لصيانة الأبراج. عند كل تعرّضٍ للضباب تطفو الشخصية العدوانية وتعاود التخريب. بعد الهروب إلى منطقة حماية احتياطية داخل أحد المباني تستعيد وعيها وتبدأ تحقيقًا ذاتيًا: من الفاعل؟ ولماذا يتكرّر الانهيار؟ ومع جمع الأدلة تكتشف (قبل اللاعب بقليل أو بعده) أنها هي نفسها السبب.
-            </p>
-            
-            <div class="highlight">
-                <strong>هدفنا التصميمي:</strong> تمكين اللاعب من استنتاج الحقيقة قبل لحظة الكشف الرسمية عبر التلميحات وليس التصريح.
-            </div>
-        </section>
+      <div class="card span-4">
+        <h2>لوغو / شعار</h2>
+        <div class="img-slot small" data-label="شعار">
+          <!-- <img src="assets/logo.png" alt="الشعار"> -->
+          <span>شعار</span>
+          <input type="file" accept="image/*" hidden>
+        </div>
+        <p class="muted">مكان لشعار اللعبة أو أيقونة.</p>
+      </div>
 
-        <section class="section">
-            <h2>طريقة السرد (Show, don't tell)</h2>
-            <ul>
-                <li><strong>تلميحات بيئية:</strong> لوحات صيانة، سجلات دخول، بصمات تردد محفوظة في وحدات الأبراج.</li>
-                <li><strong>رسائل/تسجيلات غامضة</strong> من المنظمة تُقرأ بطريقتين (خير/شر) حتى يتضح السياق.</li>
-                <li><strong>سلوك العالم:</strong> حين تتعطل الأبراج يزحف الضباب ويتغير الصوت/الإضاءة، وتتبدّل سلوكيات الـNPCs.</li>
-            </ul>
-        </section>
+      <!-- اللور: الضباب ككائن -->
+      <div class="card span-6">
+        <h2>الضباب ككائن حي</h2>
+        <p>كتلة شبه واعية تتواصل بترددات منخفضة، تتغذّى على النشاط العصبي، وتشوّه الذاكرة والزمن.</p>
+        <p class="muted">ليس شرًا مطلقًا؛ قد تكون له مبرراته في “استعادة توازن” مفقود.</p>
+        <div class="img-slot" data-label="Concept">
+          <span>Concept</span>
+          <input type="file" accept="image/*" hidden>
+        </div>
+        <div class="roadmap">
+          <span class="tag">تأثيرات ذاكرة</span>
+          <span class="tag">إشارات صوتية</span>
+          <span class="tag">تعلّم سلوكي</span>
+        </div>
+      </div>
 
-        <section class="section gameplay-pillars">
-            <h2>أعمدة اللعب</h2>
-            
-            <div class="pillar">
-                <h3>الملاحة عبر الإشارة</h3>
-                <p>تتبع الوميض والصوت للوصول للأبراج وإعادة معايرة الترددات.</p>
-            </div>
-            
-            <div class="pillar">
-                <h3>إدارة المخاطر</h3>
-                <p>التعرض للضباب يفعّل "فيفيان الأخرى" تدريجياً (ضيق مجال الرؤية، طنين، تذبذب HUD، تبدّل السلوك).</p>
-            </div>
-            
-            <div class="pillar">
-                <h3>استنتاج القصة</h3>
-                <p>جمع قرائن (رسائل، مفاتيح تردد، مقتنيات) وبناء فرضية اللاعب.</p>
-            </div>
-            
-            <div class="pillar">
-                <h3>توازن أخلاقي</h3>
-                <p>لا شر مطلق—خيارات اللاعب تؤثر على نهاية العلاقة مع المنظمة والناجين… وحتى مع الضباب.</p>
-            </div>
-        </section>
+      <!-- الأبراج -->
+      <div class="card span-6">
+        <h2>الأبراج والترددات</h2>
+        <p>محطات تبثّ نبضات تعاكس نَسق الضباب وتُنشئ “جيوب أمان”. تعطّلُها يفتح ممراً للضباب.</p>
+        <h3>أفكار لعب</h3>
+        <ul class="list">
+          <li>تركيبات تردد متقدّمة حسب “سلالة” الضباب.</li>
+          <li>صيانة ميدانية مع ألغاز سمعية/ضوئية.</li>
+          <li>تتبع بصمات تردد لكشف المخرب الحقيقي.</li>
+        </ul>
+        <div class="img-slot" data-label="Diagram">
+          <span>Diagram</span>
+          <input type="file" accept="image/*" hidden>
+        </div>
+      </div>
 
-        <section class="section moments">
-            <h2>لحظات محورية</h2>
-            
-            <div class="moment">
-                <h3>مَشاهد فقدان الوعي</h3>
-                <p>بدلاً من الانتقال الفوري، انيميشن تدريجي (اهتزاز، سقوط، قصاصات ذاكرة، قطع صوتي).</p>
-            </div>
-            
-            <div class="moment">
-                <h3>عودة الوعي داخل الملاذ الاحتياطي</h3>
-                <p>بداية "قضية تحقيق": لوحة بيضاء تربط القرائن، وخيوط تؤدي لذاتك.</p>
-            </div>
-            
-            <div class="moment">
-                <h3>الكشف</h3>
-                <p>تَوقُّع اللاعب ثم تأكيده عبر سجلّات التردد وبصمة أدواتك على وحدات التخريب.</p>
-            </div>
-        </section>
+      <!-- ثنائية فيفيان -->
+      <div class="card span-6">
+        <h2>ثنائية فيفيان</h2>
+        <p>فنيّة أبراج ذات شخصيتين: الأساسية رحيمة وعملية، والبديلة عدوانية تُثار بالضباب. المنظمة تستغل الانقسام عبر “جرعات” مضبوطة.</p>
+        <h3>مشاهد فقدان الوعي</h3>
+        <p class="muted">بدل الانتقال اللحظي: تضييق رؤية، طنين، ترنّح، قطع صوتي، قصاصات ذاكرة—ثم سقوط تدريجي.</p>
+        <div class="img-slot" data-label="Animation Board">
+          <span>Storyboard</span>
+          <input type="file" accept="image/*" hidden>
+        </div>
+      </div>
 
-        <section class="section expansion">
-            <h2>التوسّع المستقبلي</h2>
-            <ul>
-                <li><strong>عالم أكبر</strong> بعدة مناطق مميّزة (حيّ سكني، ساحل وحاويات، مترو، منشأة أبحاث، أسطح أبراج) مع ملاذات آمنة تربطها.</li>
-                <li><strong>نُظم أبراج متقدمة:</strong> ضبط ترددات متعددة/تركيبات مضادة حسب "سلالة" الضباب.</li>
-                <li><strong>جرعات الضباب كميكانيك اختياري</strong> عالي المخاطرة: تمنح قدرات حسّية مؤقتة مقابل تفاقم الانقسام.</li>
-                <li><strong>تفاعل الضباب:</strong> سلوك يتعلّم من أنماط اللاعب ويشوّه الإشارات لخداعه.</li>
-                <li><strong>نهايات متعددة</strong> تبعًا لمن تثق به: الناجون، المنظمة، أو محاولة "التفاوض" مع الضباب نفسه.</li>
-            </ul>
-        </section>
+      <!-- طريقة السرد -->
+      <div class="card span-6">
+        <h2>طريقة السرد — (أظهر لا تخبر)</h2>
+        <ul class="list">
+          <li>تلميحات بيئية: لوحات صيانة، سجلات دخول، بصمات تردد في وحدات الأبراج.</li>
+          <li>رسائل/تسجيلات تُفسَّر بطريقتين حتى يتضح السياق.</li>
+          <li>تغيّر سلوك العالم عند تعطل الأبراج: صوت/إضاءة/سلوك الناجين.</li>
+        </ul>
+        <div class="img-slot" data-label="Env Clues">
+          <span>Env Clues</span>
+          <input type="file" accept="image/*" hidden>
+        </div>
+      </div>
 
-        <section class="section themes">
-            <h2>ثيمات</h2>
-            <p>
-                الهوية والاختيار تحت الضغط، الذاكرة كأرض معركة، وغياب الشر المطلق—حتى الضباب قد تكون له أسباب.
-            </p>
-        </section>
+      <!-- عالم أكبر -->
+      <div class="card span-12">
+        <h2>توسعة العالم</h2>
+        <p>مناطق متمايزة تربطها ملاذات آمنة: أحياء سكنية، ساحل وحاويات، محطات مترو، منشأة أبحاث، أسطح أبراج.</p>
+        <div class="grid">
+          <div class="img-slot span-4" data-label="District A"><span>16:9</span><input type="file" hidden accept="image/*"></div>
+          <div class="img-slot span-4" data-label="District B"><span>16:9</span><input type="file" hidden accept="image/*"></div>
+          <div class="img-slot span-4" data-label="District C"><span>16:9</span><input type="file" hidden accept="image/*"></div>
+        </div>
+      </div>
 
-        <footer class="footer">
-            <p>© 2024 Amnesia Game Concept - جميع الحقوق محفوظة</p>
-        </footer>
-    </div>
+      <!-- ميزات مستقبلية -->
+      <div class="card span-12">
+        <h2>ميزات مستقبلية مختصرة</h2>
+        <div class="roadmap">
+          <span class="tag">نهايات متعددة</span>
+          <span class="tag">جرعات ضباب اختيارية</span>
+          <span class="tag">ألغاز سمعية/ضوئية ديناميكية</span>
+          <span class="tag">موسيقى تفاعلية</span>
+          <span class="tag">توازن صعوبة</span>
+          <span class="tag">دعم يد التحكم</span>
+          <span class="tag">تحسين الأداء</span>
+          <span class="tag">نظام حفظ وتتبّع</span>
+        </div>
+      </div>
+
+      <!-- ملاحظة -->
+      <div class="card span-12">
+        <h2>ملاحظة</h2>
+        <p class="muted">هذه الصفحة لعرض أفكار اللور والميزات بصيغة أولية. يمكن استبدال جميع مربعات الصور بلقطات من المشروع أو Concept Art.</p>
+      </div>
+
+    </section>
+
+    <p class="foot">© 2024 — Amnesia (Concept) — صفحة أفكار اللور والميزات</p>
+  </div>
+
+  <!-- استبدال الصور مباشرة من المتصفح -->
+  <script>
+    // انقر على أي مربع صورة لرفع صورة محليًا دون سيرفر
+    document.querySelectorAll('.img-slot').forEach(slot=>{
+      const input = slot.querySelector('input[type="file"]');
+      slot.addEventListener('click', ()=> input && input.click());
+      if(!input) return;
+      input.addEventListener('change', e=>{
+        const f = e.target.files && e.target.files[0];
+        if(!f) return;
+        const url = URL.createObjectURL(f);
+        let img = slot.querySelector('img');
+        if(!img){ img = document.createElement('img'); slot.prepend(img); }
+        img.src = url;
+        slot.style.borderStyle = 'solid';
+        slot.querySelector('span')?.remove();
+      });
+    });
+  </script>
 </body>
 </html>
