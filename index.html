@@ -10,27 +10,15 @@
 
   <style>
     :root{
-      --bg-0:#0b0f1a;          /* أزرق غامق */
-      --bg-1:#11182a;          /* طبقة داكنة */
-      --panel:#0f1526cc;       /* زجاج مع تعتيم */
-      --text:#e7ecff;          /* أبيض مزرق */
-      --muted:#b6c1ffbb;
-      --accent:#8aa2ff;        /* نيون أزرق */
-      --accent-2:#b88cff;      /* بنفسجي */
-      --line:#31406b;
-      --good:#53f6a3;
-      --warn:#ffd166;
-      --danger:#ff6b6b;
-      --radius:16px;
-      --shadow:0 10px 30px rgba(0,0,0,.35);
-      --glow:0 0 0 transparent;
+      --bg-0:#0b0f1a; --bg-1:#11182a; --panel:#0f1526cc; --text:#e7ecff;
+      --muted:#b6c1ffbb; --accent:#8aa2ff; --accent-2:#b88cff; --line:#31406b;
+      --good:#53f6a3; --warn:#ffd166; --danger:#ff6b6b;
+      --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.35); --glow:0 0 0 transparent;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;
-      font-family:'Cairo',system-ui,Arial,Helvetica,sans-serif;
-      color:var(--text);
+      margin:0; font-family:'Cairo',system-ui,Arial,Helvetica,sans-serif; color:var(--text);
       background:
         radial-gradient(1200px 700px at 15% -10%, #2a529822 0%, transparent 60%),
         radial-gradient(900px 500px at 90% 0%, #667eea22 0%, transparent 55%),
@@ -38,69 +26,49 @@
       overflow-x:hidden;
     }
 
-    /* طبقة ضباب متحركة خفيفة */
-    .fog{
-      pointer-events:none;
-      position:fixed; inset:0;
-      background:
-        url('') center/cover no-repeat;
+    /* Language toggle */
+    .lang-toggle{
+      position:fixed; top:16px; inset-inline-end:16px; z-index:1000;
+      background:linear-gradient(180deg,#162346,#0f1a34);
+      border:1px solid #2c3e73; color:#cfe0ff; padding:8px 12px;
+      border-radius:999px; cursor:pointer; box-shadow:var(--shadow);
+      font-weight:700; letter-spacing:.5px;
     }
-    .fog::before,
-    .fog::after{
-      content:"";
-      position:absolute; inset:-20%;
+    .lang-toggle:focus{outline:2px solid #8aa2ff55; outline-offset:3px}
+
+    /* Fog */
+    .fog{ pointer-events:none; position:fixed; inset:0; background:url('') center/cover no-repeat; }
+    .fog::before,.fog::after{
+      content:""; position:absolute; inset:-20%;
       background:
         radial-gradient(closest-side, #b7c4ff0f, #0000 70%),
         radial-gradient(closest-side, #c8a7ff0f, #0000 70%);
-      filter:blur(25px);
-      animation:fogMove 40s linear infinite;
-      opacity:.8;
+      filter:blur(25px); animation:fogMove 40s linear infinite; opacity:.8;
     }
     .fog::after{ animation-duration:65s; mix-blend-mode:screen; opacity:.5 }
-    @keyframes fogMove{
-      0%{ transform:translate3d(0,0,0) scale(1)}
-      50%{ transform:translate3d(-8%,3%,0) scale(1.05)}
-      100%{ transform:translate3d(0,0,0) scale(1)}
-    }
+    @keyframes fogMove{ 0%{transform:translate3d(0,0,0) scale(1)}
+      50%{transform:translate3d(-8%,3%,0) scale(1.05)}
+      100%{transform:translate3d(0,0,0) scale(1)} }
 
     .wrap{max-width:1100px; margin:auto; padding:28px}
 
     .hero{
-      position:relative;
-      border-radius:calc(var(--radius) + 6px);
+      position:relative; border-radius:calc(var(--radius) + 6px);
       padding:36px 24px 26px;
       background:
         linear-gradient(180deg, #10172b 0%, #0b0f1a 100%),
         url('assets/hero-placeholder.jpg') center/cover no-repeat;
-      box-shadow:var(--shadow);
-      overflow:hidden;
-      isolation:isolate;
+      box-shadow:var(--shadow); overflow:hidden; isolation:isolate;
     }
-    .hero::after{
-      content:"";
-      position:absolute; inset:0;
-      background:linear-gradient(0deg, rgba(11,15,26,.9) 10%, rgba(11,15,26,.4) 100%);
-      z-index:-1;
-    }
-    .hero h1{
-      font-size:44px; margin:0 0 8px; letter-spacing:.5px;
-      text-shadow:0 10px 30px rgba(0,0,0,.45);
-    }
+    .hero::after{ content:""; position:absolute; inset:0;
+      background:linear-gradient(0deg, rgba(11,15,26,.9) 10%, rgba(11,15,26,.4) 100%); z-index:-1; }
+    .hero h1{ font-size:44px; margin:0 0 8px; letter-spacing:.5px; text-shadow:0 10px 30px rgba(0,0,0,.45); }
     .hero p{ margin:0; color:var(--muted); }
 
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(12,1fr);
-      gap:18px; margin-top:22px;
-    }
+    .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:18px; margin-top:22px; }
     .card{
-      grid-column:span 12;
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:22px;
-      box-shadow:var(--shadow);
-      backdrop-filter: blur(10px);
+      grid-column:span 12; background:var(--panel); border:1px solid var(--line);
+      border-radius:var(--radius); padding:22px; box-shadow:var(--shadow); backdrop-filter: blur(10px);
     }
     .card h2{font-size:26px; margin:0 0 10px}
     .card h3{font-size:20px; margin:18px 0 8px}
@@ -109,57 +77,43 @@
     .list{margin:6px 0 0; padding:0 18px}
     .list li{margin:8px 0}
 
-    /* أماكن صور مرنة */
     .img-slot{
-      position:relative;
-      border:1.5px dashed #6b7ab8;
-      border-radius:12px;
-      background:
-        linear-gradient(180deg, #0f1425, #0a0e1b);
-      aspect-ratio:16/9;
-      display:flex; align-items:center; justify-content:center;
+      position:relative; border:1.5px dashed #6b7ab8; border-radius:12px;
+      background:linear-gradient(180deg, #0f1425, #0a0e1b);
+      aspect-ratio:16/9; display:flex; align-items:center; justify-content:center;
       color:#9fb1ff; cursor:pointer; overflow:hidden;
     }
     .img-slot.small{aspect-ratio:1/1}
     .img-slot img{width:100%; height:100%; object-fit:cover; display:block}
     .img-slot span{
-      position:absolute; inset:auto auto 10px 10px;
-      font-size:12px; opacity:.8; background:#0e1322;
-      border:1px solid #2a3a63; border-radius:8px; padding:4px 8px;
+      position:absolute; inset:auto auto 10px 10px; font-size:12px; opacity:.8;
+      background:#0e1322; border:1px solid #2a3a63; border-radius:8px; padding:4px 8px;
     }
 
-
-    /* تخطيط استجابة */
-    @media(min-width:860px){
-      .span-6{grid-column:span 6}
-      .span-4{grid-column:span 4}
-      .span-8{grid-column:span 8}
-    }
+    @media(min-width:860px){ .span-6{grid-column:span 6} .span-4{grid-column:span 4} .span-8{grid-column:span 8} }
 
     .tag{
-      display:inline-block; margin:6px 4px 0;
-      background:#0e1730; color:#bcd2ff;
-      border:1px solid #334272;
-      padding:6px 10px; border-radius:999px; font-size:12px
+      display:inline-block; margin:6px 4px 0; background:#0e1730; color:#bcd2ff;
+      border:1px solid #334272; padding:6px 10px; border-radius:999px; font-size:12px
     }
     .roadmap{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
     .foot{color:#98a7e2; text-align:center; margin:26px 0 8px}
   </style>
 </head>
 <body>
+  <button class="lang-toggle" id="langToggle" aria-label="Switch to English">EN</button>
   <div class="fog"></div>
 
   <div class="wrap">
     <!-- SPOILERS ALERT -->
     <div class="card" style="margin-bottom: 20px; background: linear-gradient(135deg, #ff6b6b22, #ff8a8022); border-color: #ff6b6b;">
-      <h2 style="color: #ff6b6b; margin-bottom: 10px;">⚠️ تنبيه محتوى حساس - Spoilers Alert</h2>
-
+      <h2 style="color: #ff6b6b; margin-bottom: 10px;" data-en="⚠️ Sensitive Content — Spoilers Ahead">⚠️ تنبيه محتوى حساس - Spoilers Alert</h2>
     </div>
 
     <!-- HERO -->
     <header class="hero">
-      <h1>Amnesia — أفكار اللّور والميزات</h1>
-      <p>عرض بصري للأفكار السردية والاتجاهات المستقبلية،</p>
+      <h1 data-en="Amnesia — Lore & Feature Ideas">Amnesia — أفكار اللّور والميزات</h1>
+      <p data-en="A visual deck of narrative ideas and future directions.">عرض بصري للأفكار السردية والاتجاهات المستقبلية،</p>
     </header>
 
     <!-- GRID CONTENT -->
@@ -167,126 +121,136 @@
 
       <!-- لقطات/آرت رئيسي -->
       <div class="card span-8">
-        <h2>غلاف / لقطة من اللعبة</h2>
+        <h2 data-en="Cover / In-game Shot">غلاف / لقطة من اللعبة</h2>
         <div class="img-slot" data-label="غلاف">
-
-          <img src="images/jj.png" alt="لقطة أساسية">
-          <span>غلاف</span>
-          <!--<input type="file" accept="image/*" hidden>-->
+          <img src="images/jj.png" alt="لقطة أساسية" data-alt-en="Key shot">
+          <span data-en="Cover">غلاف</span>
         </div>
-
       </div>
 
       <div class="card span-4">
-        <h2>لوغو / شعار</h2>
+        <h2 data-en="Logo / Mark">لوغو / شعار</h2>
         <div class="img-slot small" data-label="شعار">
-          <img src="images/cover.png" alt="الشعار">
-          <span>شعار</span>
-          <!--<input type="file" accept="image/*" hidden>-->
+          <img src="images/cover.png" alt="الشعار" data-alt-en="Logo">
+          <span data-en="Logo">شعار</span>
         </div>
-
       </div>
 
       <div class="card span-12">
-        <h2> الضباب ككائن حي — العنصر المحوري</h2>
-        <p><strong>كتلة شبه واعية تتواصل بترددات منخفضة، تتغذّى على النشاط العصبي، وتشوّه الذاكرة والزمن.</strong></p>
-        <p class="muted">ليس شرًا مطلقًا؛ قد تكون له مبرراته في “استعادة توازن” مفقود.</p>
+        <h2 data-en="The Fog as a Living Entity — The Core"> الضباب ككائن حي — العنصر المحوري</h2>
+        <p data-en="<strong>A semi-sentient mass that communicates in low frequencies, feeds on neural activity, and warps memory and time.</strong>"><strong>كتلة شبه واعية تتواصل بترددات منخفضة، تتغذّى على النشاط العصبي، وتشوّه الذاكرة والزمن.</strong></p>
+        <p class="muted" data-en="Not pure evil; it may be trying to “restore” a lost balance.">ليس شرًا مطلقًا؛ قد تكون له مبرراته في “استعادة توازن” مفقود.</p>
 
         <div class="roadmap">
-          <span class="tag">تأثيرات ذاكرة</span>
-          <span class="tag">إشارات صوتية</span>
-          <span class="tag">تعلّم سلوكي</span>
-          <span class="tag">كائن ذكي</span>
+          <span class="tag" data-en="Memory Effects">تأثيرات ذاكرة</span>
+          <span class="tag" data-en="Audio Cues">إشارات صوتية</span>
+          <span class="tag" data-en="Behavioral Learning">تعلّم سلوكي</span>
+          <span class="tag" data-en="Sapient Entity">كائن ذكي</span>
         </div>
       </div>
 
-
       <div class="card span-6">
-        <h2> الأبراج والترددات — آلية اللعب الأساسية</h2>
-        <p><strong>محطات تبثّ نبضات تعاكس نَسق الضباب وتُنشئ "جيوب أمان".</strong> تعطّلُها يفتح ممراً للضباب.</p>
+        <h2 data-en="Towers & Frequencies — Core Gameplay"> الأبراج والترددات — آلية اللعب الأساسية</h2>
+        <p data-en="<strong>Stations that broadcast pulses countering the fog’s cadence to create &quot;safe pockets&quot;.</strong> Disabling them opens pathways for the fog."><strong>محطات تبثّ نبضات تعاكس نَسق الضباب وتُنشئ &quot;جيوب أمان&quot;.</strong> تعطّلُها يفتح ممراً للضباب.</p>
         <ul class="list">
-          <li>تركيبات تردد متقدّمة حسب “سلالة” الضباب.</li>
-          <li>صيانة ميدانية مع ألغاز سمعية/ضوئية.</li>
-          <li>تتبع بصمات تردد لكشف المخرب الحقيقي.</li>
+          <li data-en="Advanced frequency combos per fog “strain”.">تركيبات تردد متقدّمة حسب “سلالة” الضباب.</li>
+          <li data-en="Field maintenance with audio/visual puzzles.">صيانة ميدانية مع ألغاز سمعية/ضوئية.</li>
+          <li data-en="Track frequency fingerprints to reveal the true saboteur.">تتبع بصمات تردد لكشف المخرب الحقيقي.</li>
         </ul>
-
       </div>
 
-
       <div class="card span-6">
-        <h2> ثنائية فيفيان — الشخصية الرئيسية</h2>
-        <p>فنيّة أبراج ذات شخصيتين: الأساسية رحيمة وعملية، والبديلة عدوانية تُثار بالضباب. المنظمة تستغل الانقسام عبر “جرعات” مضبوطة.</p>
-        <h3>مشاهد فقدان الوعي</h3>
-        <p class="muted">بدل الانتقال اللحظي: تضييق رؤية، طنين، ترنّح، قطع صوتي، قصاصات ذاكرة—ثم سقوط تدريجي.</p>
-
+        <h2 data-en="Vivian’s Duality — The Protagonist"> ثنائية فيفيان — الشخصية الرئيسية</h2>
+        <p data-en="A tower technician with two personas: the baseline is compassionate and pragmatic; the alternate is aggressive, triggered by the fog. The organization exploits the split via controlled “doses”.">فنيّة أبراج ذات شخصيتين: الأساسية رحيمة وعملية، والبديلة عدوانية تُثار بالضباب. المنظمة تستغل الانقسام عبر “جرعات” مضبوطة.</p>
+        <h3 data-en="Blackout Sequences">مشاهد فقدان الوعي</h3>
+        <p class="muted" data-en="Instead of a hard cut: vignette, tinnitus, sway, audio dropout, memory scraps—then a gradual collapse.">بدل الانتقال اللحظي: تضييق رؤية، طنين، ترنّح، قطع صوتي، قصاصات ذاكرة—ثم سقوط تدريجي.</p>
       </div>
 
       <!-- طريقة السرد -->
       <div class="card span-12">
-        <h2>📖 طريقة السرد — (أظهر لا تخبر)</h2>
+        <h2 data-en="📖 Narrative Style — Show, Don’t Tell">📖 طريقة السرد — (أظهر لا تخبر)</h2>
         <ul class="list">
-          <li>تلميحات بيئية: لوحات صيانة، سجلات دخول، بصمات تردد في وحدات الأبراج.</li>
-          <li>رسائل/تسجيلات تُفسَّر بطريقتين حتى يتضح السياق.</li>
-          <li>تغيّر سلوك العالم عند تعطل الأبراج: صوت/إضاءة </li>
+          <li data-en="Environmental hints: maintenance boards, access logs, frequency prints in tower modules.">تلميحات بيئية: لوحات صيانة، سجلات دخول، بصمات تردد في وحدات الأبراج.</li>
+          <li data-en="Messages/recordings readable two ways until context lands.">رسائل/تسجيلات تُفسَّر بطريقتين حتى يتضح السياق.</li>
+          <li data-en="World behavior changes when towers go down: audio/lighting shifts.">تغيّر سلوك العالم عند تعطل الأبراج: صوت/إضاءة</li>
         </ul>
-
       </div>
 
-
       <div class="card span-12">
-        <h2> توسعة العالم</h2>
-        <p>مناطق متمايزة تربطها ملاذات آمنة: أحياء سكنية، ساحل وحاويات، محطات مترو، منشأة أبحاث، أسطح أبراج الخ....</p>
-        <p class="muted">المناطق مترابطة قصصياً وتخدم تطور الحبكة والشخصيات.</p>
+        <h2 data-en="World Expansion"> توسعة العالم</h2>
+        <p data-en="Distinct districts connected by safe havens: housing blocks, a container coast, metro stations, a research facility, rooftops, etc.">مناطق متمايزة تربطها ملاذات آمنة: أحياء سكنية، ساحل وحاويات، محطات مترو، منشأة أبحاث، أسطح أبراج الخ....</p>
+        <p class="muted" data-en="Areas interlock narratively and serve plot and character arcs.">المناطق مترابطة قصصياً وتخدم تطور الحبكة والشخصيات.</p>
       </div>
 
       <!-- ميزات مستقبلية -->
       <div class="card span-12">
-        <h2> ميزات مستقبلية مختصرة</h2>
+        <h2 data-en="Shortlist of Future Features"> ميزات مستقبلية مختصرة</h2>
         <div class="roadmap">
-          <span class="tag">نهايات متعددة</span>
-          <span class="tag">جرعات ضباب اختيارية</span>
-          <span class="tag">ألغاز سمعية/ضوئية ديناميكية</span>
-          <span class="tag">موسيقى تفاعلية</span>
-          <span class="tag">توازن صعوبة</span>
-          <span class="tag">تحسين الأداء</span>
-          <span class="tag">نظام حفظ وتتبّع</span>
+          <span class="tag" data-en="Multiple Endings">نهايات متعددة</span>
+          <span class="tag" data-en="Optional Fog Doses">جرعات ضباب اختيارية</span>
+          <span class="tag" data-en="Dynamic A/V Puzzles">ألغاز سمعية/ضوئية ديناميكية</span>
+          <span class="tag" data-en="Adaptive Music">موسيقى تفاعلية</span>
+          <span class="tag" data-en="Difficulty Balancing">توازن صعوبة</span>
+          <span class="tag" data-en="Performance Tuning">تحسين الأداء</span>
+          <span class="tag" data-en="Save & Tracking System">نظام حفظ وتتبّع</span>
         </div>
       </div>
 
       <!-- ملاحظة -->
       <div class="card span-12">
-        <h2>📝 ملاحظة</h2>
-        <p class="muted">هذه الصفحة لعرض أفكار اللور والميزات بصيغة أولية. </p>
+        <h2 data-en="📝 Note">📝 ملاحظة</h2>
+        <p class="muted" data-en="This page showcases early lore and feature ideas.">هذه الصفحة لعرض أفكار اللور والميزات بصيغة أولية. </p>
       </div>
 
     </section>
 
-<p class="foot">
-  © 2025 — Amnesia (Concept) — صفحة أفكار اللور والميزات  
-  | <a href="https://ia0o.itch.io/amnesia" target="_blank" style="color:var(--accent); text-decoration:none;">
-      صفحة اللعبة على itch.io
-    </a>
-</p>
+    <p class="foot" data-en="© 2025 — Amnesia (Concept) — Lore & Features page  | <a href=&quot;https://ia0o.itch.io/amnesia&quot; target=&quot;_blank&quot; style=&quot;color:var(--accent); text-decoration:none;&quot;>Game page on itch.io</a>">
+      © 2025 — Amnesia (Concept) — صفحة أفكار اللور والميزات
+      | <a href="https://ia0o.itch.io/amnesia" target="_blank" style="color:var(--accent); text-decoration:none;">
+          صفحة اللعبة على itch.io
+        </a>
+    </p>
   </div>
 
-
   <script>
-    /*
-    document.querySelectorAll('.img-slot').forEach(slot=>{
-      const input = slot.querySelector('input[type="file"]');
-      slot.addEventListener('click', ()=> input && input.click());
-      if(!input) return;
-      input.addEventListener('change', e=>{
-        const f = e.target.files && e.target.files[0];
-        if(!f) return;
-        const url = URL.createObjectURL(f);
-        let img = slot.querySelector('img');
-        if(!img){ img = document.createElement('img'); slot.prepend(img); }
-        img.src = url;
-        slot.style.borderStyle = 'solid';
-        slot.querySelector('span')?.remove();
+    // Language toggle (AR <-> EN)
+    (function(){
+      const btn = document.getElementById('langToggle');
+      const KEY = 'amnesia:lang';
+      const initial = localStorage.getItem(KEY) || 'ar';
+      setLang(initial);
+
+      btn.addEventListener('click', () => {
+        const next = (document.documentElement.lang === 'ar') ? 'en' : 'ar';
+        setLang(next);
+        localStorage.setItem(KEY, next);
       });
-    });   */
+
+      function setLang(lang){
+        // Update document language + direction + title
+        document.documentElement.lang = lang;
+        document.documentElement.dir  = (lang === 'ar') ? 'rtl' : 'ltr';
+        document.title = (lang === 'ar')
+          ? 'Amnesia — أفكار اللور والميزات'
+          : 'Amnesia — Lore & Features Ideas';
+
+        // Update button label and aria
+        btn.textContent = (lang === 'ar') ? 'EN' : 'AR';
+        btn.setAttribute('aria-label', (lang === 'ar') ? 'Switch to English' : 'التبديل إلى العربية');
+
+        // Swap all elements carrying data-en (we store original AR html as data-ar once)
+        document.querySelectorAll('[data-en]').forEach(el => {
+          if (!el.dataset.ar) el.dataset.ar = el.innerHTML.trim();
+          el.innerHTML = (lang === 'en') ? el.dataset.en : el.dataset.ar;
+        });
+
+        // Swap image alt text when provided
+        document.querySelectorAll('img[data-alt-en]').forEach(img => {
+          if (!img.dataset.altAr) img.dataset.altAr = img.getAttribute('alt') || '';
+          img.setAttribute('alt', (lang === 'en') ? img.dataset.altEn : img.dataset.altAr);
+        });
+      }
+    })();
   </script>
 </body>
 </html>
