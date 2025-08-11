@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amnesia - فكرة مبدئية للعبة</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 3px solid #2a5298;
+            margin-bottom: 40px;
+        }
+        
+        .game-title {
+            font-size: 3.5em;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.4em;
+            color: #666;
+            font-weight: 300;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-right: 5px solid #2a5298;
+        }
+        
+        .section h2 {
+            font-size: 2.2em;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .section h3 {
+            font-size: 1.6em;
+            color: #2a5298;
+            margin: 25px 0 15px 0;
+        }
+        
+        .section p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .logline {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-right: 5px solid #764ba2;
+        }
+        
+        .logline p {
+            font-size: 1.3em;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+        
+        .characters .character {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-right: 3px solid #28a745;
+        }
+        
+        .gameplay-pillars .pillar {
+            background: #fff;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-right: 3px solid #ffc107;
+        }
+        
+        .moments .moment {
+            background: #fff;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-right: 3px solid #dc3545;
+        }
+        
+        .themes {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            border-right: 5px solid #ff9a9e;
+        }
+        
+        .expansion {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            border-right: 5px solid #a8edea;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            border-right: 3px solid #ffc107;
+            margin: 20px 0;
+        }
+        
+        ul {
+            padding-right: 30px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 3px solid #2a5298;
+            margin-top: 40px;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .game-title {
+                font-size: 2.5em;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .section h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="game-title">Amnesia</h1>
+            <p class="subtitle">فكرة مبدئية — (Lore قيد التطوير)</p>
+        </header>
+
+        <section class="section logline">
+            <h2>الخطّاف (Logline)</h2>
+            <p>
+                ضبابٌ حيّ يزحف على أطراف المدن، وأبراجٌ تبثّ تردداتٍ تُبعده عن الملاذات الآمنة. تستيقظ فيفيان في محمية مدمَّرة لا تتذكرها… مع الوقت يتضح أنها هي نفسها اليد الخفية: عميلةٌ لمنظمةٍ تتعايش مع الضباب وتستغله عبر "جرعاته" لتفكيك هوية الناس وتجنيد شخصياتهم البديلة. كل إصلاح لبرجٍ يُقرّب الحقيقة—وكل نفخة ضباب تُعيد إطلاق "فيفيان الأخرى".
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>فرضية العالم</h2>
+            
+            <h3>الضباب ككائن حيّ</h3>
+            <p>
+                كتلة واعية/شبه واعية تتواصل عبر ترددات منخفضة وتتغذّى على النشاط العصبي وتُشوّه الذاكرة والإحساس بالزمن.
+            </p>
+            
+            <h3>الأبراج</h3>
+            <p>
+                محطات توليد نبضات/تردّدات تعاكس "نَسَق" الضباب وتبني حول المناطق الآمنة "جيوب استقرار". تعطّلُها يفتح ممراً للضباب.
+            </p>
+            
+            <h3>المنظمة</h3>
+            <p>
+                فصيل براغماتي تعلّم التعايش مع الضباب، ينتقي أفرادًا ذوي القابلية ويعطيهم جرعات ضبابية مضبوطة لخلق "شخصيات تشغيلية" عدوانية تُستعمل ضد الخصوم.
+            </p>
+        </section>
+
+        <section class="section characters">
+            <h2>الشخصيات</h2>
+            
+            <div class="character">
+                <h3>فيفيان</h3>
+                <p>
+                    فنيّة أنظمة وأبراج، عميلة مزدوجة الوعي. شخصيتها الأساسية رحيمة وعمليّة؛ شخصيتها البديلة (التي تُثار بالضباب) حازمة/عنيفة، نفّذت سابقًا ضربات تخريبية. فقدت الاسم والذكريات بفعل التعرض الطويل.
+                </p>
+            </div>
+            
+            <div class="character">
+                <h3>الناجون</h3>
+                <p>
+                    مجتمع صغير أعاد الثقة إلى فيفيان بعد أن "ساعدتهم" في الصيانة—قبل أن تُحطِّم أبراجهم في حالة انتكاسة.
+                </p>
+            </div>
+            
+            <div class="character">
+                <h3>الضباب</h3>
+                <p>
+                    ليس شرًا مطلقًا؛ قد يكون كيانًا يحاول استعادة توازن بيئي/طاقي مفقود.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>الملخص السردي</h2>
+            <p>
+                تستيقظ فيفيان في محمية مدمّرة كانت هي من دمّر أبراجها خلال نوبة فقدان. تكسب ثقة الناس مجددًا بمهاراتها وتتطوّع لصيانة الأبراج. عند كل تعرّضٍ للضباب تطفو الشخصية العدوانية وتعاود التخريب. بعد الهروب إلى منطقة حماية احتياطية داخل أحد المباني تستعيد وعيها وتبدأ تحقيقًا ذاتيًا: من الفاعل؟ ولماذا يتكرّر الانهيار؟ ومع جمع الأدلة تكتشف (قبل اللاعب بقليل أو بعده) أنها هي نفسها السبب.
+            </p>
+            
+            <div class="highlight">
+                <strong>هدفنا التصميمي:</strong> تمكين اللاعب من استنتاج الحقيقة قبل لحظة الكشف الرسمية عبر التلميحات وليس التصريح.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>طريقة السرد (Show, don't tell)</h2>
+            <ul>
+                <li><strong>تلميحات بيئية:</strong> لوحات صيانة، سجلات دخول، بصمات تردد محفوظة في وحدات الأبراج.</li>
+                <li><strong>رسائل/تسجيلات غامضة</strong> من المنظمة تُقرأ بطريقتين (خير/شر) حتى يتضح السياق.</li>
+                <li><strong>سلوك العالم:</strong> حين تتعطل الأبراج يزحف الضباب ويتغير الصوت/الإضاءة، وتتبدّل سلوكيات الـNPCs.</li>
+            </ul>
+        </section>
+
+        <section class="section gameplay-pillars">
+            <h2>أعمدة اللعب</h2>
+            
+            <div class="pillar">
+                <h3>الملاحة عبر الإشارة</h3>
+                <p>تتبع الوميض والصوت للوصول للأبراج وإعادة معايرة الترددات.</p>
+            </div>
+            
+            <div class="pillar">
+                <h3>إدارة المخاطر</h3>
+                <p>التعرض للضباب يفعّل "فيفيان الأخرى" تدريجياً (ضيق مجال الرؤية، طنين، تذبذب HUD، تبدّل السلوك).</p>
+            </div>
+            
+            <div class="pillar">
+                <h3>استنتاج القصة</h3>
+                <p>جمع قرائن (رسائل، مفاتيح تردد، مقتنيات) وبناء فرضية اللاعب.</p>
+            </div>
+            
+            <div class="pillar">
+                <h3>توازن أخلاقي</h3>
+                <p>لا شر مطلق—خيارات اللاعب تؤثر على نهاية العلاقة مع المنظمة والناجين… وحتى مع الضباب.</p>
+            </div>
+        </section>
+
+        <section class="section moments">
+            <h2>لحظات محورية</h2>
+            
+            <div class="moment">
+                <h3>مَشاهد فقدان الوعي</h3>
+                <p>بدلاً من الانتقال الفوري، انيميشن تدريجي (اهتزاز، سقوط، قصاصات ذاكرة، قطع صوتي).</p>
+            </div>
+            
+            <div class="moment">
+                <h3>عودة الوعي داخل الملاذ الاحتياطي</h3>
+                <p>بداية "قضية تحقيق": لوحة بيضاء تربط القرائن، وخيوط تؤدي لذاتك.</p>
+            </div>
+            
+            <div class="moment">
+                <h3>الكشف</h3>
+                <p>تَوقُّع اللاعب ثم تأكيده عبر سجلّات التردد وبصمة أدواتك على وحدات التخريب.</p>
+            </div>
+        </section>
+
+        <section class="section expansion">
+            <h2>التوسّع المستقبلي</h2>
+            <ul>
+                <li><strong>عالم أكبر</strong> بعدة مناطق مميّزة (حيّ سكني، ساحل وحاويات، مترو، منشأة أبحاث، أسطح أبراج) مع ملاذات آمنة تربطها.</li>
+                <li><strong>نُظم أبراج متقدمة:</strong> ضبط ترددات متعددة/تركيبات مضادة حسب "سلالة" الضباب.</li>
+                <li><strong>جرعات الضباب كميكانيك اختياري</strong> عالي المخاطرة: تمنح قدرات حسّية مؤقتة مقابل تفاقم الانقسام.</li>
+                <li><strong>تفاعل الضباب:</strong> سلوك يتعلّم من أنماط اللاعب ويشوّه الإشارات لخداعه.</li>
+                <li><strong>نهايات متعددة</strong> تبعًا لمن تثق به: الناجون، المنظمة، أو محاولة "التفاوض" مع الضباب نفسه.</li>
+            </ul>
+        </section>
+
+        <section class="section themes">
+            <h2>ثيمات</h2>
+            <p>
+                الهوية والاختيار تحت الضغط، الذاكرة كأرض معركة، وغياب الشر المطلق—حتى الضباب قد تكون له أسباب.
+            </p>
+        </section>
+
+        <footer class="footer">
+            <p>© 2024 Amnesia Game Concept - جميع الحقوق محفوظة</p>
+        </footer>
+    </div>
+</body>
+</html>
